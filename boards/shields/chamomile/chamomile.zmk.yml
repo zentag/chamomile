@@ -1,0 +1,11 @@
+file_format: "1"
+id: chamomile
+name: Chamomile
+type: shield
+url: https://github.com/zen/chamomile
+requires: [xiao_ble]
+features:
+  - keys
+siblings:
+  - chamomile_left
+  - chamomile_right

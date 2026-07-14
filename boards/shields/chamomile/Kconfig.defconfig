@@ -1,0 +1,26 @@
+# Copyright (c) 2026 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+if SHIELD_CHAMOMILE_LEFT
+
+config ZMK_KEYBOARD_NAME
+    default "Chamomile"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif # SHIELD_CHAMOMILE_LEFT
+
+if SHIELD_CHAMOMILE_RIGHT
+
+config ZMK_KEYBOARD_NAME
+    default "Chamomile"
+
+endif # SHIELD_CHAMOMILE_RIGHT
+
+if SHIELD_CHAMOMILE_LEFT || SHIELD_CHAMOMILE_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif

@@ -1,0 +1,11 @@
+// Copyright (c) 2026 The ZMK Contributors
+// SPDX-License-Identifier: MIT
+
+#include "chamomile.dtsi"
+
+// Right half's kscan reports local columns 0-7 (same wiring as the left half,
+// since it's the same PCB mirrored). Offset them into columns 8-15 of the
+// combined transform in chamomile.dtsi.
+&default_transform {
+	col-offset = <8>;
+};
