@@ -36,9 +36,9 @@
 		wakeup-source;
 
 		row-gpios
-			= <&xiao_d 6 GPIO_ACTIVE_HIGH>   // P6  - row: top
-			, <&xiao_d 8 GPIO_ACTIVE_HIGH>   // P8  - row: home
-			, <&xiao_d 7 GPIO_ACTIVE_HIGH>   // P7  - row: bottom
+                = <&xiao_d 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+                , <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+                , <&xiao_d 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
 			;
 
 		col-gpios
@@ -84,4 +84,8 @@
 		display-name = "Default Layout";
 		transform = <&default_transform>;
 	};
+};
+
+&uart0 {
+    status = "disabled";
 };
