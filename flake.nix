@@ -16,7 +16,7 @@
     forAllSystems = nixpkgs.lib.genAttrs (nixpkgs.lib.attrNames zmk-nix.packages);
   in {
     packages = forAllSystems (system: rec {
-      default = firmware;
+      default = flash;
 
       firmware = zmk-nix.legacyPackages.${system}.buildSplitKeyboard {
         name = "chamomile";
@@ -46,6 +46,28 @@
         };
       };
 
+      settings-reset = zmk-nix.legacyPackages.${system}.buildKeyboard {
+        name = "settings_reset";
+        src = nixpkgs.lib.sourceFilesBySuffices self [
+          ".board"
+          ".cmake"
+          ".conf"
+          ".defconfig"
+          "_defconfig"
+          ".dts"
+          ".dtsi"
+          ".json"
+          ".keymap"
+          ".overlay"
+          ".shield"
+          ".yml"
+          ".yaml"
+          ".h"
+        ];
+        board = "xiao_ble";
+        shield = "settings_reset";
+        zephyrDepsHash = "sha256-F03oJNHWmHlpFc1JHyvqX02WL+Pg6ZcNWpCaiDfJANA=";
+      };
       flash = zmk-nix.packages.${system}.flash.override {inherit firmware;};
       update = zmk-nix.packages.${system}.update;
     });
